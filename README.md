@@ -2,7 +2,9 @@
 This Repo contains all my notes from Self-Learning.
 
 Reviewing my notes helps things I leanred before to sink in. 
+
 Everytime I review my notes, they involve to a different version.
+
 Without my notes, knowledge I learned before would be gone after a few days.
 
 • English:
