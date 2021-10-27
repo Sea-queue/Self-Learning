@@ -12,6 +12,7 @@ Without my notes, knowledge I learned before would be gone after a few days.
   I can hear a word or phrase once and be able to find it online, and transfer them to my notes.
 
 • CS:
+
   General topicals: 
   
      GUI vs CLI; 
