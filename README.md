@@ -17,6 +17,7 @@ Without my notes, knowledge I learned before would be gone after a few days.
 
   General topicals: 
   
+     Linux Terminal commands, Git commands, GPG commands, Latex, etc
      GUI vs CLI; 
      the Birth of Internet; 
      Telecommunication; 
