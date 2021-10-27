@@ -9,6 +9,8 @@ Without my notes, knowledge I learned before would be gone after a few days.
 
 • English:
 
+  Most words/phrases were from a conversation.
+  
   I've been collecting English words & phrases since 2014.
   
   I can hear a word or phrase once and be able to find it online, and transfer them to my notes.
