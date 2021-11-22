@@ -1,0 +1,168 @@
+<!--
+TODO: Google CSS colors to get all the color names.
+html: define layout for webpages by using html tags;
+      Three main sections: header-body-footer
+
+html tag:
+    -DOCTYPE: the type of this document
+
+    -Container tag:  <starting> <ending>
+        - <html> </html>: parent
+            holding other tags
+
+        - <head> </head>: child; sibling with body
+            defines the data about the documents: title, image associated,
+            import resources, command center.
+            - <head style="color: Yellow"
+
+        - <body> </body>: child; sibling with head
+            all the contents,
+
+        - <p> </p>: grandchild
+            - <p style="color: blue; background-color: Green">
+            -
+
+        - <title> </title>:
+            hoding the title of the webpage
+
+        - <h1> </h1> through <h6> </h6>: heading tag
+            defins headLine/title
+            <h1>'s font is the largest <h6>'s is the smallest
+
+        - <b> </b>: bold tage
+            bolding the letters
+
+        - <i> </i>: italic tag
+
+        - <big> </big>:
+            increase the font a little bit
+
+        - <small> </small>:
+            decrease the font a little bit
+
+        - <sub> </sub>:
+            Chemical/Math formula
+            Water representation: H<sub>2</sub>O
+
+        - <sup> </sup>:
+            Chemical/Math formula
+            10<sup>2</sup>
+
+        - <nav> </nav>: in the header section
+
+        - <article> </article>: in the main section
+
+        - <section> </section>: goes well with article
+
+        - <li> </li>: bullet point
+
+    - Single tag:
+        - <meta> tag:
+            attributes/properties
+
+        - <br/> break tag:
+            creats a new line
+
+        - <hr/> horizontal line tage:
+            creats a horizontal line
+
+    - Link:
+        - <a href="https://www.google.com" target="_blank"> </a>
+            create a link, and open it at another tap when click.
+        - <a href="Resume.pdf"> Resume </a>
+        - <a href="cat.jpg"> Cat </a>
+
+    - Images:
+        - <img src="url or local image_file" alt="Beautiful Nature"
+            width="100" height="200"/>
+          alt="this message will show if the image can't be loaded"
+          In addition to setting both the width & heght, you can choose
+          to only set either the width or the height only. HTML will
+          automatically adjust the ratio for the other parameter.
+
+    - Space:
+        -&nbsp; :if you put several such entities together, than the renderer
+               (~browser) will not break the line among these spaces.
+        -&ensp; :the normal space character, but written as an entity.
+        -&emsp; :emphasized space, which means a wider than normal space
+
+
+-->
+
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="Seaqueue's personal website">
+        <title>Seaqueue_Cheng</title>
+    </head>
+    <body style="background-color: lightblue">
+        <header>
+            <h1 style="color: Green">Seaqueue Cheng</h1>
+            <hr/>
+            <img src="Seaqueue.jpg" width="200" alt="Seaqueue's photo"/>
+            <br/><br/>
+
+
+            <a href="https://github.com/Sea-queue/Self-Learning.git" target="_blank">
+            <big>Seaqueue's GitHub</big></a>
+            &emsp;&emsp;&emsp;
+            <a href="Resume.pdf" target="_blank"><big>Resume</big></a>
+
+        </header>
+        <main>
+            <br/>
+            <h2>Bio:</h2>
+            <hr/>
+            <p style="color: Green; background-color: LightYellow">
+                I'm from Taiyuan, China. I've lived in the US for 7 years now.
+                <br/><br/>
+                 &ensp; Teach me your favorate Egnglish slang
+                <br/><br/>
+                 &ensp; Let's code or practice Soccer together
+                <br/><br/>
+                 &ensp; I can probably show you some kickboxing
+            </p>
+
+            <h2>Experiences:</h2>
+            <hr/>
+            <p>
+                <i><b>Bellevue College:</b></i>
+                &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;
+                ESL Program
+                <br/>
+
+                <i><b>University of Washington:</b></i>
+                &emsp;&emsp;&emsp;&emsp;&emsp;
+                ESL Program & Global Business
+                <br/>
+
+                <i><b>SAA International Pilot Training:</b></i>
+                &emsp; &ensp;
+                Internship
+                <br/>
+
+                <i><b>UMass Boston:</b></i>
+                &emsp; &emsp; &emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&ensp;
+                BS_CS  &emsp; Tutor of Calculous-I &ensp;&&ensp; Java
+                <br/>
+
+                <i><b>Northeastern University:</b></i>
+                &emsp;&emsp;&emsp;&emsp;&ensp;&ensp;&ensp;
+                BS_CS
+            </p>
+
+            <h2>Interests:</h2>
+            <hr/>
+            <b>KickBoxing &emsp;|&emsp;
+               Planking &emsp;|&emsp;
+               Soccer &emsp;|&emsp;
+               Basketball &emsp;|&emsp;
+               Rubik's Cube </b>
+            <br/><br/><br/><br/>
+        </main>
+        <footer>
+
+        </footer>
+    </body>
+</html>

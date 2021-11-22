@@ -1,0 +1,36 @@
+# makefile:
+# type "make": default invoking first variable "programs"
+# then type "./all_in_one" to execute
+# type "make programs" to invoke "programs"
+# type "make doit" to invoke "doit"
+# type "make functions.o" to
+# after colon: it's dependency need to be there for the commend
+
+# Constants for single point control
+CP = gcc -c -Wall
+OBJ = all_in_one
+
+programs:
+	$(Compiler) functions.c syntax.c main.c -o $(OBJ)
+
+doit:
+	./$(OBJ)
+
+
+all:$(OBJ)
+
+$(OBJ): main.o functions.o syntax.o
+	$(CP) main.o functions.o syntax.o -o $(OBJ)
+
+main.o: main.c
+	$(CP) main.c
+
+functions.o: functions.c
+	$(CP) functions.c
+
+syntax.o: syntax.c
+	$(CP) syntax.c
+
+clean:
+	rm $(OBJ)
+	rm *.o

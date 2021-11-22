@@ -1,0 +1,209 @@
+• # for comments
+• command + / for multi line comments
+• """ blah blah blah """
+
+Interpreter:
+-------------
+# writing python code in Terminal for quick tests
+# no need IDE, no need to set up a file
+# In Terminal type: python or python3
+# Ctril-D  /   exit()
+
+Function:
+---------
+• keyword: def
+• colon; NO curly braces; NO semicolon
+• indentation to include in the function
+• lowercase for names, underscore between words
+
+# define the function:
+def say_hi(name, age):
+    print("Name: " + name + " Age: " + str(age))
+
+# calling the function:
+say_hi("Seaqueue", 25)
+
+
+# Return statement:
+def cube(num):
+    return num * num * num
+
+result = cube(3)
+print(result)
+
+
+If statement:
+-------------
+is_male = True
+is_tall = False
+
+if is_male and is_tall:
+    print("good for you!")
+
+elif is_male or is_tall:
+    print("Not bad!")
+
+elif not(is_male and is_tall):
+    print("So what!")
+
+else:
+    print("Next time!")
+
+# inside a function: (==, !=)
+def max_num(num1, num2, num3):
+    if num1 >= num2 and num1 >= num3:
+        return num1
+    elif num2 >= num1 and num2 >= num3:
+        return num2
+    else:
+        return num3
+
+print(max_num(1, 4, 2))
+
+# another example
+if letter in "AEIOUaeiou":
+
+if letter.lower() in "aeiou":
+
+
+While loop:
+-----------
+i = 1;
+while i <= 10:
+    print(i)
+    i += 1
+
+
+for loop:
+-----------
+for letter in "Seaqueue":
+    print(letter)
+
+fruits = ["Apple", "BlueBerry", "Cherry", "Dates"]
+for fruit in fruits:
+    print(fruit)
+
+for index in range(len(fruits)):
+    print(fruits[index])
+
+for integer in range(4):     # 0 1 2 3
+    print(integer)
+
+for integer in range(3, 7):  # 3 4 5 6
+    print(integer)
+
+
+try except:
+------------
+try:
+    number = int(input("Enter a number: \n"))
+    print("You get " + str(number) + " Dollars!")
+except ValueError:
+    print("Not an integer. You got nothing")
+
+
+User input:
+------------
+name = input("Enter you name: \n")
+interest = input("What do you like: \n")
+print("Hello " + name + "!" + " Wow, " + interest + " is cool!")
+
+
+input/output:
+-------------
+import stdio
+stdio.writeln(str(9) + "pieces of bread"
+
+
+Read Info from a file:
+----------------------
+• "r"  read
+• "w"  write
+• "a"  append
+• "r+" read and write
+
+employee_file = open("employees.txt", "r")
+print(employee_file.readable())
+
+print(employee_file.readline())
+print(employee_file.readline())
+
+for employee in employee_file.readlines():
+    print(employee)
+
+# have to close the file
+employee_file.close()
+
+
+# Alert! Append on every time I run the program,
+file = open("seaqueue.txt", "a")
+file.write("\nSeaqueue is maniac?")
+file.close()
+
+
+# can writ an existing file
+# can writ a new file with different extension
+file = open("newSeaqueue.txt", "w")
+file.write("\nSeaqueue is raising!")
+file.close()
+
+
+module: import file:
+--------------------
+# a .py file
+import useful_tools
+
+# calling with "file_name.function_name"
+useful_tools.roll_dice()
+
+# check out the python modules:
+https://docs.python.org/3/py-modindex.html
+
+# using "pip install"(package manager) to download python modules
+They'll be stored the modules in the external libraries-lib-
+sidepackage. To Use them import the file.
+To remove use "pip uninstall"
+
+
+Classes & Objects:
+-------------------
+# first Student refers to the python file
+# second Student refers to the class type
+from Student import Student
+
+# use dot operator to call functions
+
+
+Inheritance / Override:
+-------------
+class Chef:
+    def __init__(self):
+
+    def chef_special(self):
+
+
+class ChineseChef(Chef):
+    def __init__(self):
+
+    # Overriding:
+    def chef_special(self):
+
+
+
+Outline:
+Sets:
+Strings:
+Collections:
+Itertools:
+Lambda Functions:
+Exceptions And Errors:
+Logging:
+JSON:
+Random Numbers:
+Decorators:
+Threading vs Multiprocessing:
+Multithreading:
+Function Arguments:
+Shallow vs Deep copying:
+The Asterisk(*) Operator:
+Context Managers:

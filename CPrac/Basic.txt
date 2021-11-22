@@ -1,0 +1,7 @@
+Basic of C:
+-----------
+
+comments:
+---------
+// single line comments
+/* block comments */
