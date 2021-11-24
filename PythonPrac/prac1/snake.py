@@ -1,9 +1,8 @@
 import pygame
 import math
 import random
-import tkinter as tk
+from tkinter import *
 from tkinter import messagebox
-
 
 class Cube:
     size = 20
@@ -31,9 +30,9 @@ class Cube:
             centre = dis // 2
             radius = 3
             circleMiddle = (i * dis + centre - radius, j * dis + 8)
-            circleMiddle = (i * dis + dis - radius*2, j * dis + 8)
+            circleMiddle2 = (i * dis + dis - radius * 2, j * dis + 8)
             pygame.draw.circle(surface, (0, 0, 0), circleMiddle, radius)
-            pygame.draw.circle(surface, (0, 0, 0), circleMiddle, radius)
+            pygame.draw.circle(surface, (0, 0, 0), circleMiddle2, radius)
 
 class Snake:
     body = []
@@ -49,6 +48,7 @@ class Snake:
 
 
     def move(self):
+        # somehow needs this for loop to trigger the window to pop up
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
@@ -102,11 +102,30 @@ class Snake:
 
 
     def reset(self, pos):
-        pass
-
+        self.head = Cube(pos) # give a new head
+        self.body = [] # clear the body
+        self.body.append(self.head)
+        self.turns = {}
+        self.dirnx = 0
+        self.dirny = 1
 
     def addCube(self):
-        pass
+        tail = self.body[-1]
+        dx, dy = tail.dirnx, tail.dirny
+
+        # moving to the right
+        if dx == 1 and dy == 0:
+            self.body.append(Cube((tail.pos[0] - 1, tail.pos[1])))
+        # moving to the left
+        elif dx == -1 and dy == 0:
+            self.body.append(Cube((tail.pos[0] + 1, tail.pos[1])))
+        elif dx == 0 and dy == 1:
+            self.body.append(Cube((tail.pos[0], tail.pos[1] - 1)))
+        elif dx == 0 and dy == -1:
+            self.body.append(Cube((tail.pos[0], tail.pos[1] + 1)))
+
+        self.body[-1].dirnx = dx
+        self.body[-1].dirny = dy
 
 
     def draw(self, surface):
@@ -131,36 +150,60 @@ def draw_grid(w, size, surface):
 
 def redraw_window(surface):
     surface.fill((0, 0, 0))
-    s.draw(surface)
+    cube1 = Cube(random_snack(width, snake), color = (0, 255, 0))
+    cube1.draw(surface)
+    snake.draw(surface)
+    snack.draw(surface)
     draw_grid(width, size, surface)
     pygame.display.update()
 
 
-def random_snack(size, items):
-    pass
+def random_snack(size, item):
+    positions = item.body
+
+    while True:
+        x = random.randrange(size)
+        y = random.randrange(size)
+        if len(list(filter(lambda z:z.pos == (x, y), positions))) > 0:
+            continue
+        else:
+            break
+    return (x, y)
 
 
 def message_box(subject, content):
-    pass
+    root = Tk()
+    root.geometry("300x200")
+    messagebox.showinfo(subject, content)
 
 
 def main():
-    global width, size, s
+    global width, size, snake, snack
     width = 500
     size = 20
     window = pygame.display.set_mode((width, width))
-    s = Snake((255, 0, 0), (10, 10))
+    snake = Snake((255, 0, 0), (10, 10))
+    snack = Cube(random_snack(size, snake), color = (0, 255, 0))
+    snake.addCube()
     flag = True
     clock = pygame.time.Clock()
 
     while flag:
         pygame.time.delay(70)
         clock.tick(10)
-        s.move()
-        # somehow needs this for loop to trigger the window pop up
-        # for event in pygame.event.get():
-        #     if event.type == pygame.QUIT:
-        #         flag = False
+        snake.move()
+        if snake.body[0].pos == snack.pos:
+            snake.addCube()
+            snack = Cube(random_snack(size, snake), color = (0, 255, 0))
+
+        # print the score reset the game when the snake hit itself
+        for x in range(len(snake.body)):
+            if snake.body[0].pos in list(map(lambda z:z.pos, snake.body[x+1:])):
+                 print('Score: ', len(snake.body))
+                 # might be a MAC problem
+                 #message_box("You Lost!", 'play again...')
+                 snake.reset((10, 10))
+                 break
         redraw_window(window)
 
 main()
