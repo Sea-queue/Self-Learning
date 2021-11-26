@@ -1,4 +1,4 @@
-#import os
+import os
 #from math import sin, cos
 import pygame
 import math
@@ -52,6 +52,8 @@ def text_display(letter, x_start, y_start):
 #     text = font.render(str(letter), True, white)
 #     display_surface.blit(text, (x_start, y_start))
 
+os.system("afplay rainMarch.mp3&")
+
 run = True
 while run:
     screen.fill(black)
@@ -94,6 +96,7 @@ while run:
             x_start = 0
             text_display(b[i], x_start, y_start)
             x_start += x_separator
+
 
 
     pygame.display.update()
