@@ -41,6 +41,21 @@ Structured Query Language (SQL):
 • standardized language for interacting with RDBMS
 • C.R.U.D: Create, Read, Update, Delete
 
+A hybrid language, it's actually 4 types of language in one
+• Data Query Language(DQL):
+    > query the database for information
+    > get information that is already stored in database
+
+• Data Definition Language(DDL):
+    > define database schemes
+
+• Data Control Language(DCL):
+    > control access to the database
+    > user permission management
+
+• Data Manipulation Language(DML):
+    > inserting, updating and deleting data
+
 
 Non-relational Database Managemnet System (NRDBMS):
 ----------------------------------------------------
@@ -51,7 +66,53 @@ Implementation  specific:
 There is no standard language. Mostly, each System has their own language.
 
 
+Table Key:
+----------
+            surrogate key      vs   natural key:
+no mapping to the real world   vs   has mapping to the real world
+               "1, 2, 3 ..."   vs   "SSN"
+
+foregin key: private key of another table
+• could be stored as an element at the end of a table
+• could be composite primary key of a table
+
+composite key:
+Two keys together uinique identify a row
+
+
 Query:
 ------
 Requests made to the database system for specific information
 (a google search is query)
+
+In other words: a set of instructions given to the RDBMS(written in SQL)
+that tell the RDBMS what information you want.
+    > TONS of data in a DB
+    > Often hidden in a complex schema
+    > Goal is only to get the data you need
+
+
+After downloading mySQL:
+------------------------
+in terminal:
+mysql: command not found
+echo 'export PATH=/usr/local/mysql/bin:$PATH' >> ~/.bash_profile
+
+reload the bash_profile:    . ~/.bash_profile: reload
+log in:                     mysql -u root -p
+create a database:          create database <name>;
+
+
+SQL basic:
+----------
+always ending with a ';'
+
+INT                 -- whole numbers
+DECIMAL(M, N)       -- (total digits, digits after decimal point)
+VARCHAR(1)          -- string of text of length 1
+BLOB                -- binary large object, stores large data
+DATE                -- 'yyyy-mm-dd'
+TIMESTAMP           -- 'yyyy-mm-dd hh:mm:ss'  used for recording
+
+
+CREATE TABLE        --
