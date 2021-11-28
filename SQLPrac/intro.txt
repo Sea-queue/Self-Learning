@@ -1,0 +1,57 @@
+What is Database (DB)?
+----------------------
+• any collection of related information
+    > Shopping list
+    > to do list
+• stored in different ways
+    > On paper
+    > in mind
+    > on a computer
+$: computers are great for keeping track of LARGE AMOUNT of inforamtion
+
+
+Two types of Databases:
+------------------------
+Relational Databases(SQL)   vs  Non-Relational Databases
+
+Relational:
+• Organize data into one or more tables:
+    > Each table has columns and rows
+    > A unique key identifies each row
+
+Non-Relational:
+• Anything but a traditional table
+    > Graphs
+    > Maps (key -value)
+    > Documents
+
+
+Relational Database Management System (RDBMS):
+----------------------------------------------
+• it's a software application
+• use SQL to help users create and maintain a relational database:
+    > mySQL
+    > Oracal
+    > mariaDB
+    > postgreSQL
+
+
+Structured Query Language (SQL):
+--------------------------------
+• standardized language for interacting with RDBMS
+• C.R.U.D: Create, Read, Update, Delete
+
+
+Non-relational Database Managemnet System (NRDBMS):
+----------------------------------------------------
+> mongoDB, dynamaDB
+
+Implementation  specific:
+-------------------------
+There is no standard language. Mostly, each System has their own language.
+
+
+Query:
+------
+Requests made to the database system for specific information
+(a google search is query)
