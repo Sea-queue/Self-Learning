@@ -1,18 +1,18 @@
 What is Database (DB)?
 ----------------------
 • any collection of related information
-    > Shopping list
+    > shopping list
     > to do list
 • stored in different ways
-    > On paper
+    > on paper
     > in mind
     > on a computer
-$: computers are great for keeping track of LARGE AMOUNT of inforamtion
+$: Computers are great for keeping track of LARGE AMOUNT of inforamtion
 
 
 Two types of Databases:
 ------------------------
-Relational Databases(SQL)   vs  Non-Relational Databases
+Relational Databases(SQL)   vs   Non-Relational Databases
 
 Relational:
 • Organize data into one or more tables:
@@ -92,69 +92,36 @@ that tell the RDBMS what information you want.
     > Goal is only to get the data you need
 
 
-After downloading mySQL:
-------------------------
 In Terminal:
+------------------------
 mysql: command not found
+After downloading mySQL:
 echo 'export PATH=/usr/local/mysql/bin:$PATH' >> ~/.bash_profile
 . ~/.bash_profile: reload       -- reload the bash_profile
+
 mysql -u root -p                -- log in
 create database <name>;         -- create a database
 SHOW DATABSES;                  -- prints a list of databases
 SHOW SCHEMAS;                   -- prints a list of databases
 
+//Run sql file while connect to server:
+mysql -uroot -p
+source /Users/nsebhastian/Desktop/test/main.sql
+or
+\. /Users/nsebhastian/Desktop/test/main.sql
+
+//Run sql file while not connect to server:
+mysql -uroot -p school_db < /Users/nsebhastian/Desktop/test/main.sql
+
 
 SQL basic:
 ----------
 always ending with a ';'
+must include ' ' between -- and comments
 
 INT                     -- whole numbers
 DECIMAL(M, N)           -- (total digits, digits after decimal point)
 VARCHAR(1)              -- string of text of length 1
-BLOB                    -- binary large object, stores large data
 DATE                    -- 'yyyy-mm-dd'
 TIMESTAMP               -- 'yyyy-mm-dd hh:mm:ss'  used for recording
-
-Example:
---------
-CREATE TABLE student (
-    student_id INT AUTO_INCREMENT,
-    name VARCHAR(20) NOT NULL,
-    major VARCHAR(20) DEFAULT 'undecided',
-    PRIMARY KEY(student_id)
-);
-
-DESCRIBE student;           -- show table, column types
-DROP TABLE student;         -- delete the table
-SELECT * FROM student;      -- show all the elements
-
-ALTER TABLE student ADD gpa DECIMAL(3, 2);
-ALTER TABLE student DROP COLUMN gpa;
-
-INSERT INTO student VALUES(1, 'Seaqueue', 'CS');
-INSERT INTO(name, major) VALUES('Gina', 'Business');
-
-UPDATE student SET major = 'Bio' WHERE major = 'Business';
-update student set name = 'Tom' where name = 'Briany';
--- change everyone's major to 'undecided':
-update student set major = 'undecided';
-
-delete from student where student_id = 5;
-delete from student where name = 'Briany';
--- delete everyone:
-delete from student;
-
-select * from student;
-select name from student;
-select student_id from student;
-select major from student;
-select student.name from student order by name;
-select student.name from student order by name desc;
-select * from student limit 1;
-select * from student where major = 'CS';
-select name from student where major = 'CS' or major = 'Business';
-select * from student where major in ('CS', 'Business');
-select * from student where major in ('CS', 'Business') and student_id > 3;
-
--- comparison: < , >, = , <=, >=, <>(not equal), AND, OR
-select * from student  where name <= 'Diego' AND major = 'Business';
+BLOB                    -- binary large object, stores large data
