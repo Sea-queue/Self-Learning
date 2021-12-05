@@ -55,3 +55,67 @@ select sum(total_sales), client_id
 from works_with
 group by client_id
 order by sum(total_sales) desc;
+
+
+-- Wild Card:
+-- %: any number of characters
+-- _: on character
+
+-- find any client's who are an LLC
+select * from client where client_name LIKE '%LLC';
+
+-- find any branch suppliers who are in the label business
+update branch_supplier
+set supplier_name = 'Stamford Labels'
+where supplier_name = 'Stamford Lables';
+select * from branch_supplier;
+select * from branch_supplier where supplier_name LIKE '%Labels';
+
+-- find any employee born in October
+update employee
+set last_name = 'Bernard', birth_day = '1973-07-22', salary = 65000
+where emp_id = 107;
+select * from employee;
+select * from employee where birth_day LIKE '____-10%';
+
+-- find any clients who are schools
+select * from client where client_name like '%school%';
+
+
+-- Union:
+-- both selects have to have the same number of columns
+
+-- find a list of employee and branch name
+select first_name from employee
+union
+select branch_name from branch;
+
+-- list of employees / branch names / client names
+select branch_name as Names from branch
+union
+select first_name from employee
+union
+select client_name from client;
+
+-- find a list of all clients and branch_supplier_names
+-- use the tablenName. to specify when column names are the same
+select client_name, client.branch_id from client
+union
+select supplier_name, branch_supplier.branch_id from branch_supplier;
+
+-- find a list of all money spent or earned by the company
+-- when the values are the same, it prints only once
+select salary from employee
+union
+select total_sales from works_with;
+
+
+-- Joins
+-- ------
+insert into branch values(4, 'Buffalo', NULL, NULL);
+
+-- find all branches and the names of their managers
+select employee.emp_id, employee.first_name, branch.branch_name
+from employee
+join branch
+on employee.emp_id = branch.mgr_id;
