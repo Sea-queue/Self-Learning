@@ -1,3 +1,5 @@
+USE Seaqueue_DB
+
 -- find all employees ordered by salary most to least
 select * from employee order by salary desc;
 
@@ -119,3 +121,59 @@ select employee.emp_id, employee.first_name, branch.branch_name
 from employee
 join branch
 on employee.emp_id = branch.mgr_id;
+
+-- left join: include all the elements in employee table
+select employee.emp_id, employee.first_name, branch.branch_name
+from employee
+left join branch
+on employee.emp_id = branch.mgr_id;
+
+-- right join: include all the elements in branch table
+select employee.emp_id, employee.first_name, branch.branch_name
+from employee
+right join branch
+on employee.emp_id = branch.mgr_id;
+
+-- full join
+
+
+-- Nested Query
+-- get data from one table in order to inform the data from another table
+
+-- find names of all employees who have sold over 30,000 to a single client
+select employee.first_name, employee.last_name
+from employee
+where employee.emp_id IN (
+    select works_with.emp_id
+    from works_with
+    where works_with.total_sales > 30000
+);
+
+
+-- find all clients who are handled by the branch that Micheal Scott manages
+-- Assume you know Micheal's ID
+select client.client_name
+from client
+where client.branch_id = (
+    select branch.branch_id
+    from branch
+    where branch.mgr_id = 102
+    limit 1
+);
+
+
+-- Delete
+-- ------
+
+-- on delete set null: when the foreign key gets deleted, set the key to null
+delete from employee where emp_id = 102;
+select * from branch;
+
+-- on delete cascade: when the foreign key gets deleted, deleted the entire row
+-- use this when the foreign key is part of the primary key
+delete from branch where branch_id = 2;
+select * from branch_supplier;
+
+
+-- Trigger
+-- -------
