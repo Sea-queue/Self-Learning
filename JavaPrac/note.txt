@@ -1,0 +1,43 @@
+Java skills & tricks:
+
+
+Integer.MAX_VALUE
+Integer.MIN_VALUE
+Double.POSITIVE_INFINITY
+Double.NEGTIVE_INFINITY
+------------------------
+
+
+"strings".equals("anotherString");
+oneInt == anotherInt;
+----------------------------------
+
+
+'.'  !=  “."
+----------------
+
+
+Integer / Integer = Integer
+Double  / Integer = Double
+----------------------------
+
+
+List<String> result = new ArrayList<>();
+int left = 5;
+int right = 8;
+String sr = String.valueOf(right);
+result.add(String.valueOf(i));
+result.add(left + "->" + right);
+--------------------------------
+
+
+if (r1.time < r2.time) return -1;
+else if (r1.time == r2.time) return 0;		VS    r1.time - r2.time
+else return -1;
+---------------------------------------------------------------------
+
+
+t.checkExpect(4.3333 == 4.3333, true) // BAD idea
+t.checkExpect(4.3333 - 4.3333 < 0.001, true) // MUCH BETTER
+t.checkInexact(4.3333, 4.3333, 0.001);
+------------------------------------------------------------
