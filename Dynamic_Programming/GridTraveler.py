@@ -24,7 +24,7 @@ print(gridTraveler_recur(2, 3));
 print(gridTraveler_recur(5, 3));
 
 
-#Dynamic programming with memorization:
+#Dynamic programming with memoization:
 def gridTraveler(m, n, table):
     key = str(m) + "," + str(n)
     if key in table:

@@ -13,7 +13,7 @@ public class Fibonacci {
         return fib(n - 1) + fib(n - 2);
     }
 
-    //Dynamic Programming using memorization for integers:
+    //Dynamic Programming using memoization for integers:
     public int fibInt(int n, Map<Integer, Integer> fibTable) {
         if (fibTable.containsKey(n)) return fibTable.get(n);
         if (n <= 2) return 1;
@@ -21,7 +21,7 @@ public class Fibonacci {
         return fibTable.get(n);
     }
 
-    //Dynamic programming suing memorization for Long:
+    //Dynamic programming suing memoization for Long:
     public long fibLong(int n, Map<Integer, Long> fibTable) {
         if (fibTable.containsKey(n)) return fibTable.get(n);
         if (n <= 2) return 1;

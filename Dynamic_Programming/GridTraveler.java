@@ -28,7 +28,7 @@ import java.util.HashMap;
      }
 
 
-     //Dynamic programming with memorization:
+     //Dynamic programming with memoization:
      public long gridTraveler(int m, int n, Map<String, Long> table) {
          String key = m + "," + n;
          if (table.containsKey(key)) return table.get(key);

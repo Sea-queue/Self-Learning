@@ -1,0 +1,11 @@
+Memoization Recipe:
+
+1. make it work.
+    • visualiza the problem as a tree
+    • implement the tree using recursion
+    • test it
+
+2. make it efficient.
+    • add a memo object(hashMap(java) or Dictionary(python))
+    • add a base case to return memo values
+    • store return values into the memo before returning

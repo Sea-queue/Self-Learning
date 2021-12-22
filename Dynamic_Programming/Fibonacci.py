@@ -1,7 +1,7 @@
 
 # recursively calculating Fibonacci number
 def fib_recure(n):
-    if (n <= 2):
+    if n <= 2:
         return 1
     return fib_recure(n - 1) + fib_recure(n - 2)
 
@@ -11,7 +11,7 @@ print(fib_recure(7))
 print(fib_recure(8))
 
 
-#Dynamic-programming using memorization:
+#Dynamic-programming using memoization:
 def fibDP(n, fib_table):
     if n in fib_table:
         return fib_table[n];
