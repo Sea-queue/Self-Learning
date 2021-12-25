@@ -29,6 +29,33 @@ public class Fibonacci {
         return fibTable.get(n);
     }
 
+    //Iterative: Tabulation
+    //the 0th number of the sequence is 0.
+    //the 1st number of the sequence is 1.
+    //n:      0, 1, 2, 3, 4, 5, 6, 7,  8,  9, ...
+    //fib(n): 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, ...
+    //time: O(n)  Linear
+    public int fibTabulation(int n) {
+        int[] table = new int[n + 3];
+        table[1] = 1;
+        for (int i = 0; i <= n; i += 1) {
+            table[i + 1] += table[i];
+            table[i + 2] += table[i];
+        }
+        return table[n];
+    }
+
+    //for Long number
+    public long fibTabulationLong(int n) {
+        long[] table = new long[n + 3];
+        table[1] = 1;
+        for (int i = 0; i <= n; i += 1) {
+            table[i + 1] += table[i];
+            table[i + 2] += table[i];
+        }
+        return table[n];
+    }
+
     public static void main(String[] args) {
         Fibonacci fib = new Fibonacci();
         System.out.println(fib.fib(6));
@@ -37,5 +64,9 @@ public class Fibonacci {
         System.out.println(fib.fibInt(6, new HashMap<Integer, Integer>()));
         System.out.println(fib.fibInt(46, new HashMap<Integer, Integer>()));
         System.out.println(fib.fibLong(47, new HashMap<Integer, Long>()));
+
+        System.out.println(fib.fibTabulation(8));
+        System.out.println(fib.fibTabulation(46));
+        System.out.println(fib.fibTabulationLong(47));
     }
 }
