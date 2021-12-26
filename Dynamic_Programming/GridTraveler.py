@@ -17,11 +17,7 @@ so return 3
 def gridTraveler_recur(m, n):
     if (m == 0 or n == 0): return 0
     if (m == 1 and n == 1): return 1
-    return gridTraveler_recur(m - 1, n) + gridTraveler_recur(m, n - 1);
-
-
-print(gridTraveler_recur(2, 3));
-print(gridTraveler_recur(5, 3));
+    return gridTraveler_recur(m - 1, n) + gridTraveler_recur(m, n - 1)
 
 
 #Dynamic programming with memoization:
@@ -33,8 +29,27 @@ def gridTraveler(m, n, table):
         return 0
     if (m == 1 and n == 1):
         return 1
-    table[key] = gridTraveler(m - 1, n, table) + gridTraveler(m, n - 1, table);
+    table[key] = gridTraveler(m - 1, n, table) + gridTraveler(m, n - 1, table)
     return table[key]
 
+
+# Iteration: Tabulation:
+def gridTraveler_tabulation(m, n):
+    table = [[0] * (m + 1) for i in range(n + 1)]
+    table[1][1] = 1
+
+    for i in range(m + 1):
+        for j in range(n + 1):
+            if (i+1 <= m):
+                table[i + 1][j] += table[i][j]
+            if (j+1 <= n):
+                table[i][j + 1] += table[i][j]
+
+    return table[m][n]
+
+
+print(gridTraveler_recur(2, 3))
+print(gridTraveler_recur(5, 3))
 print(gridTraveler(2, 3, dict()))
 print(gridTraveler(18, 18, dict()))
+print(gridTraveler_tabulation(18, 18))
