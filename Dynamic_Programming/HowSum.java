@@ -60,11 +60,36 @@ public class HowSum {
         return null;
     }
 
+
+    public List<Integer> howSumTabulation(int targetSum, int[] numbers) {
+        List[] table = new ArrayList[targetSum + 1];
+        table[0] = new ArrayList<Integer>();
+
+        for (int i = 0; i <= targetSum; i += 1) {
+            if (table[i] != null) {
+                for (int num : numbers) {
+                    if (num + i <= targetSum) {
+                        List<Integer> way = new ArrayList<>();
+                        List<Integer> current = table[i];
+                        for (Integer element : current) {
+                            way.add(element);
+                        }
+                        way.add(num);
+                        table[i + num] = way;
+                    }
+                }
+            }
+        }
+
+        return table[targetSum];
+    }
+
     public static void main(String[] args) {
         HowSum hs = new HowSum();
 
         System.out.println(hs.howSum(7, new int[]{2, 3, 4}));
         System.out.println(hs.howSum(7, new int[]{3}));
         System.out.println(hs.howSum(300, new int[]{7, 14}, new HashMap<Integer, List<Integer>>()));
+        System.out.println(hs.howSumTabulation(21, new int[]{4, 7}));
     }
 }

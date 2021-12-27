@@ -45,5 +45,25 @@ def howSumDP(targetSum, numbers, table):
     return None
 
 
+def howSum_tabulation(targetSum, numbers):
+    table = [None] * (targetSum + 1)
+    table[0] = []
+
+    for i in range(targetSum + 1):
+        if table[i] is not None:
+            for num in numbers:
+                if i + num <= targetSum:
+                    current = []
+                    for int in table[i]:
+                        current.append(int)
+                    current.append(num)
+                    table[i + num] = current
+
+    return table[targetSum]
+
+
+
 print(howSum(7, [3, 4]))
 print(howSumDP(300, [7, 14], dict()))
+print(howSum_tabulation(300, [50, 90]))
+print(howSum_tabulation(21, [3, 7]))
