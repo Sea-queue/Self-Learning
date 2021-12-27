@@ -40,7 +40,24 @@ def canSumDP(n, intList, table):
     return False
 
 
+def canSum_tabulation(targetSum, numbers):
+    table = [False] * (targetSum + 1)
+    table[0] = True
+
+    for num in range(targetSum + 1):
+        if (table[num]):
+            for int in numbers:
+                if (num + int <= targetSum):
+                    table[num + int] = True
+
+    return table[targetSum]
+
+
+
+
 print(canSum(7, [3, 4]))
 print(canSum(7, [5, 3]))
 # print(canSum(300, [7, 14]))
 print(canSumDP(300, [7, 14], dict()))
+print(canSum_tabulation(300, [7, 14]))
+print(canSum_tabulation(21, [5, 2]))

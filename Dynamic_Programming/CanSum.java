@@ -41,6 +41,24 @@ public class CanSum {
         return false;
     }
 
+    public boolean canSumTabulation(int targetSum, int[] numbers) {
+        boolean[] table = new boolean[targetSum + 1];
+        table[0] = true;
+
+        for (int i = 0; i <= targetSum; i += 1) {
+            //If I can get to current amount
+            if (table[i]) {
+                for (int num : numbers) {
+                    if (i + num <= targetSum) {
+                        table[i + num] = true;
+                    }
+                }
+            }
+        }
+
+        return table[targetSum];
+    }
+
 
     public static void main(String[] agrs) {
         CanSum cs = new CanSum();
@@ -48,5 +66,7 @@ public class CanSum {
         System.out.println(cs.canSum(7, new int[]{5, 3}));
         //System.out.println(cs.canSum(300, new int[]{7, 14}));
         System.out.println(cs.canSum(300, new int[]{7, 14}, new HashMap<Integer, Boolean>()));
+        System.out.println(cs.canSumTabulation(300, new int[]{7, 14}));
+        System.out.println(cs.canSumTabulation(30, new int[]{7, 14, 10}));
     }
 }
