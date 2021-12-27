@@ -64,11 +64,48 @@ public class CanConstruct {
         return false;
     }
 
+    /*
+      (abcdef, [ab, abc, cd, def, abcd]) --> true
+
+      0  1  2  3  4  5  6
+      T  F  F  F  F  F  F
+      a  b  c  d  e  f
+
+      when at 0th position, it's true because it represents the empty string
+      when at 1th position, it's true means a is possible to generate.
+      when at 4th position, it's true means abcd is possible to  generate.
+     */
+    public boolean canConstructTabulation(String target, String[] wordBank) {
+        boolean[] table = new boolean[target.length() + 1];
+        table[0] = true;
+
+        for (int i = 0; i <= target.length(); i += 1)  {
+            if (table[i] == true) {
+                for (String str : wordBank) {
+                    String prefix = "";
+                    if (i + str.length() <= target.length()) {
+                         prefix = target.substring(i, i + str.length());
+                    }
+                    if (prefix.equals(str)) {
+                        table[i + str.length()] = true;
+                    }
+                }
+            }
+        }
+
+        return table[target.length()];
+    }
+
     public static void main(String[] args) {
         CanConstruct cc = new CanConstruct();
         System.out.println(cc.canConstruct("abc", new String[]{"ab", "c"}));
         System.out.println(cc.canConstruct("abcd", new String[]{"ab", "c"}));
         System.out.println(cc.canConstruct("eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeef",
-        new String[]{"eee", "ee", "e"}, new HashMap<String, Boolean>()));
+            new String[]{"eee", "ee", "e"}, new HashMap<String, Boolean>()));
+        System.out.println(cc.canConstructTabulation("abcd", new String[]{"ab", "c"}));
+        System.out.println(cc.canConstructTabulation("eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeef",
+            new String[]{"eee", "ee", "e"}));
+        System.out.println(cc.canConstructTabulation("eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeef",
+            new String[]{"eee", "ee", "e", "f"}));
     }
 }

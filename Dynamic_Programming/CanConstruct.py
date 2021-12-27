@@ -44,6 +44,24 @@ def canConstructDP(target, wordBank, table):
     return False
 
 
+def canConstruct_tabulation(target, wordBank) :
+    table = [False] * (len(target) + 1)
+    table[0] = True
+
+    for i in range(len(target) + 1):
+        if table[i]:
+            for word in wordBank:
+                if len(word) + i <= len(target):
+                    prefix = target[i:len(word) + i]
+                    if (prefix == word):
+                        table[i + len(word)] = True
+
+    return table[len(target)]
+
+
 print(canConstruct("abc", ["ab", "c"]))
 print(canConstruct("abcd", ["a", "cd", "bc"]))
 print(canConstructDP("eeeeeeeeeeeeeeeeeeeeeeeeef", ["e", "ee", "eee"], dict()))
+print(canConstruct_tabulation("abcd", ["a", "d", "bc"]))
+print(canConstruct_tabulation("eeeeeeeeeeeeeeeeeeeeeeeeef", ["e", "ee", "eee"]))
+print(canConstruct_tabulation("eeeeeeeeeeeeeeeeeeeeeeeeef", ["e", "ee", "eee", "f"]))
