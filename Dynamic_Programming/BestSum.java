@@ -66,9 +66,48 @@ public class BestSum {
         return result;
     }
 
+
+    public List<Integer> bestSumTabulation(int targetSum, int[] numbers) {
+        List[] table = new List[targetSum + 1];
+        table[0] = new ArrayList<Integer>();
+
+        for (int i = 0; i <= targetSum; i += 1) {
+            if (table[i] != null) {
+                for (int num : numbers) {
+                    if (i + num <= targetSum) {
+                        if (table[i + num] == null) {
+                            List<Integer> way = new ArrayList<Integer>();
+                            List<Integer> copy = table[i];
+                            for (Integer element : copy) {
+                                way.add(element);
+                            }
+                            way.add(num);
+                            table[i + num] = way;
+                        }
+                        else {
+                            List<Integer> way = new ArrayList<Integer>();
+                            List<Integer> copy = table[i];
+                            for (Integer element : copy) {
+                                way.add(element);
+                            }
+                            way.add(num);
+                            if (way.size() < table[i + num].size()) {
+                                table[i + num] = way;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        return table[targetSum];
+    }
+
     public static void main(String[] args) {
         BestSum bs = new BestSum();
         System.out.println(bs.bestSum(8, new int[]{1, 4, 5}));
         System.out.println(bs.bestSum(100, new int[]{1, 4, 5, 25}, new HashMap<Integer, List<Integer>>()));
+        System.out.println(bs.bestSumTabulation(8, new int[]{1, 4, 5}));
+        System.out.println(bs.bestSumTabulation(100, new int[]{1, 4, 5, 25}));
     }
 }

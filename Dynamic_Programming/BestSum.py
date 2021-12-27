@@ -50,5 +50,34 @@ def bestSumDP(targetSum, numbers, table):
     return result
 
 
+def bestSum_tabulation(targetSum, numbers):
+    table = [None] * (targetSum + 1)
+    table[0] = []
+
+    for i in range(targetSum + 1):
+        if table[i] is not None:
+            for num in numbers:
+                if i + num <= targetSum:
+                    if table[i + num] is None:
+                        current = table[i]
+                        way = []
+                        for int in current:
+                            way.append(int)
+                        way.append(num)
+                        table[i + num] = way
+                    else:
+                        current = table[i]
+                        way = []
+                        for int in current:
+                            way.append(int)
+                        way.append(num)
+                        if (len(way) < len(table[i + num])):
+                            table[i + num] = way
+
+    return table[targetSum]
+
 print(bestSum(8, [1, 4, 5]))
 print(bestSumDP(100, [1, 2, 5, 25], dict()))
+print(bestSum_tabulation(8, [1, 4, 5]))
+print(bestSum_tabulation(100, [1, 2, 5, 25]))
+print(bestSum_tabulation(80, [20, 25, 5]))
