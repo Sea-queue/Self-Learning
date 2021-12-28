@@ -54,9 +54,41 @@ def allConstructDP(target, wordBank, table):
     return result
 
 
+def allConstruct_tabulation(target, wordBank):
+    table = [None] * (len(target) + 1)
+    table[0] = [[]]
+
+    for i in range(len(target)  + 1):
+        for word in wordBank:
+            if i + len(word) <= len(target):
+                prefix = target[i : i + len(word)]
+                if prefix == word:
+                    if table[i + len(word)] is not None:
+                        current = table[i]
+                        for ways in current:
+                            way = []
+                            for str in ways:
+                                way.append(str)
+                            way.append(word)
+                            table[i + len(word)].append(way)
+                    else:
+                        current = table[i]
+                        copy = [] # becareful here it's not [[]]
+                        for ways in current:
+                            way = []
+                            for str in ways:
+                                way.append(str)
+                            way.append(word)
+                            copy.append(way)
+                        table[i + len(word)] = copy
+
+    return table[len(target)]
+
 
 print(allConstruct("abcd", ["a", "ab", "abc", "c", "d"]))
 print(allConstruct("hello", ["h", "he", "e", "llo", "lo", "el"]))
 print(allConstructDP("eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeef",
     ["e", "ee", "eee", "eeee"], dict()))
 print(allConstruct("aaaaaaaaaaaaaaaaaaaaaaaaaz", ["a", "aa", "aaaa"]))
+print(allConstruct_tabulation("abcdef", ["ab", "abc", "cd", "def", "abcd", "ef", "c"]))
+print(allConstruct_tabulation("hello", ["h", "he", "e", "llo", "lo", "el"]))

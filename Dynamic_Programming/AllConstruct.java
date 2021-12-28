@@ -18,7 +18,7 @@
  the time is still O(n^m) expenantial complexity for worst case
  because you need to list out all of the possible case.
 
- space: O(m): 
+ space: O(m):
  */
 
 import java.util.List;
@@ -81,6 +81,49 @@ public class AllConstruct {
         return result;
     }
 
+
+    public List<List<String>> allConstructTabulation(String target, String[] wordBank) {
+        List<List<String>>[] table = new ArrayList[target.length() + 1];
+        table[0] = new ArrayList<List<String>>();
+        table[0].add(new ArrayList<String>());
+
+        for (int i = 0; i <= target.length(); i += 1) {
+            for (String word : wordBank) {
+                if (i + word.length() <= target.length()) {
+                    String prefix = target.substring(i, i + word.length());
+                    if (prefix.equals(word)) {
+                        if (table[i + word.length()] != null) {
+                            List<List<String>> current = table[i];
+                            for (List<String> ways : current) {
+                                List<String> way = new ArrayList<>();
+                                for (String str : ways) {
+                                    way.add(str);
+                                }
+                                way.add(word);
+                                table[i + word.length()].add(way);
+                            }
+                        }
+                        else {
+                            List<List<String>> current = table[i];
+                            List<List<String>> copy = new ArrayList<>();
+                            for (List<String> ways : current) {
+                                List<String> way = new ArrayList<>();
+                                for (String str : ways) {
+                                    way.add(str);
+                                }
+                                way.add(word);
+                                copy.add(way);
+                            }
+                            table[i + word.length()] = copy;
+                        }
+                    }
+                }
+            }
+        }
+
+        return table[target.length()];
+    }
+
     public static void main(String[] args) {
         AllConstruct ac = new AllConstruct();
 
@@ -90,8 +133,14 @@ public class AllConstruct {
             new String[]{"purp", "p", "ur", "le", "purpl"}));
         System.out.println(ac.allConstruct("eeeeeeeeeeeeeeeeeeeeeeeeeeef",
             new String[]{"e", "ee", "eee", "eeee" }, new HashMap<String, List<List<String>>>()));
-        System.out.println(ac.allConstruct("eeeeeeeeeeeeeeeeeeeeeeeeeeef",
+        // System.out.println(ac.allConstruct("eeeeeeeeeeeeeeeeeeeeeeeeeeef",
+        //     new String[]{"e", "ee", "eee", "eeee"}));
+        System.out.println(ac.allConstructTabulation("abcdef",
+            new String[]{"ab", "abc", "cd", "def", "abcd", "ef", "c"}));
+        System.out.println(ac.allConstructTabulation("eeeeeeeeeeef",
             new String[]{"e", "ee", "eee", "eeee"}));
 
+        System.out.println(ac.allConstructTabulation("hello",
+            new String[]{"h", "he", "e", "llo", "lo", "el"}));
     }
 }
