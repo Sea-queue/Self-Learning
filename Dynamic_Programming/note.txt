@@ -5,6 +5,11 @@ is to simply store the results of subproblems, so that we do not have to
 re-compute them when needed later. This simple optimization reduces time
 complexities from exponential to polynomial.
 
+• notice any overlapping subproblems
+• decide what is the trivbially smallest input
+• think recursively to use Memoization
+• think iteratively to use Tabulation
+• draw a strategy FIRST!!!
 
 Memoization Recipe:
 1. make it work.
