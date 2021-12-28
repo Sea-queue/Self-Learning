@@ -38,7 +38,24 @@ def countConstructDP(target, wordBank, table):
     table[target] = count
     return count
 
+
+def countConstruct_tabulation(target, wordBank):
+    table = [0] * (len(target) + 1)
+    table[0] = 1
+
+    for i in range(len(target) + 1):
+        for word in wordBank:
+            if (i + len(word) <= len(target)):
+                prefix = target[i : i + len(word)]
+                if (prefix == word):
+                    table[i + len(word)] += table[i]
+
+    return table[len(target)]
+
+
 print(countConstruct("abcd", ["a", "ab", "cd", "bc", "d"]))
 print(countConstruct("purple", ["purp", "p", "ur", "le", "purpl"]))
 print(countConstructDP("eeeeeeeeeeeeeeeeeeeeeeeef", ["e", "ee", "eee", "f"], dict()))
 print(countConstruct("eeeeeeeeeeeeeeeeeeeeeeeef", ["e", "ee", "eee", "f"]))
+print(countConstruct_tabulation("purple", ["purp", "p", "ur", "le", "purpl"]))
+print(countConstruct_tabulation("eeeeeeeeeeeeeeeeeeeeeeeef", ["e", "ee", "eee", "f"]))

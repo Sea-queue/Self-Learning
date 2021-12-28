@@ -55,6 +55,24 @@ import java.util.HashMap;
          return count;
      }
 
+     public int countConstructTabulation(String target, String[] wordBank) {
+         int[] table = new int[target.length() + 1];
+         table[0] = 1;
+
+         for (int i = 0; i <= target.length(); i += 1) {
+             for (String word : wordBank) {
+                 if (i + word.length() <= target.length()) {
+                     String prefix = target.substring(i, word.length() + i);
+                     if (prefix.equals(word)) {
+                         table[i + word.length()] += table[i];
+                     }
+                 }
+             }
+         }
+
+         return table[target.length()];
+     }
+
 
      public static void main(String[] agrs) {
          CountConstruct cc = new CountConstruct();
@@ -69,5 +87,12 @@ import java.util.HashMap;
 
          System.out.println(cc.countConstruct("eeeeeeeeeeeeeeeeeeeeeeeeeeef",
             new String[]{"e", "ee", "eee", "eeee", "f"}));
+
+         System.out.println(cc.countConstructTabulation("abcd",
+            new String[]{"a", "ab", "b", "cd", "abc", "d"}));
+
+         System.out.println(cc.countConstructTabulation("eeeeeeeeeeeeeeeeeeeeeeeeeeef",
+            new String[]{"e", "ee", "eee", "eeee", "f"}));
+
      }
  }
