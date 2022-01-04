@@ -35,7 +35,7 @@ def gridTraveler(m, n, table):
 
 # Iteration: Tabulation:
 def gridTraveler_tabulation(m, n):
-    table = [[0] * (m + 1) for i in range(n + 1)]
+    table = [[0] * (n + 1) for i in range(m + 1)]
     table[1][1] = 1
 
     for i in range(m + 1):
