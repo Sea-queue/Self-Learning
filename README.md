@@ -31,6 +31,14 @@ Without my notes, knowledge I learned before would be gone after a few days.
      Dynamic Programming;
   
   Coding:
-  
-     OOD;
+
+     Java
+     Python
+     C
+     HTML
+     SQL
+
+
+
+
   
