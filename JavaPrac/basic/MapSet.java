@@ -10,6 +10,89 @@
     and the remaining answer[j] values are 0.
  */
 
+
+//Iterating over Map:
+ /*
+  Using for loop:
+  1: Using entrySet()
+
+  public void forLoopEntrySet(Map<String, Integer> map) {
+      for (Map.Entry<String, Integer> entry : map.entrySet()) {
+          System.out.println(entry.getKey() + ":" + entry.getValue());
+      }
+  }
+
+  2: Using keySet()
+
+  public void forLoopKeySet(Map<String, Integer> map) {
+      for (String Key : map.keySet()) {
+          System.out.println(key + ":" + map.get(key));
+      }
+  }
+
+  3: Using values()
+
+  public void forLoopValues(Map<String, Integer> map) {
+      for (Integer value : map.values()) {
+          System.out.println(value);
+      }
+  }
+
+  Using Iterator:
+
+  1: entrySet():
+
+  public void iteratorEntrySet(Map<String, Integer> map) {
+      Iterator<Map.Entry<String, Integer>> iterator = map.entrySet().iterator();
+      while (iterator.hasNext()) {
+          Map.Entry(String, Integer) entry = iterator.next();
+          System.out.println(entry.getKey() + ":" + entry.getValue());
+      }
+  }
+
+  2: KeySet()
+
+  public void iteratorKeySet(Map<String, Interger> map) {
+      Iterator<String> iterator = map.keySet().iterator();
+      while(iterator.hasNext()) {
+          String key = iterator.next();
+          System.out.println(key + ":" + map.get(key));
+      }
+  }
+
+  3: values()
+
+  public void iteratorValues(Map<String, Integer> map) {
+      Iterator<Integer> iterator = map.values().iterator();
+      while (iterator.hasNext()) {
+          Integer value = iterator.next();
+          System.out.println("value: " + value);
+      }
+  }
+
+  Using Lambdas
+
+  1: EntrySet
+
+  public void lambdasEntry(Map<String, Integer> map) {
+      map.forEach((k, v) -> System.out.println((k + ":" + v)));
+  }
+
+
+  2: keySet
+
+  public void lambdasKeySet(Map<String, Integer> map) {
+      map.keySet().forEach(k -> System.out.println((k + ":" + map.get(k))));
+  }
+
+
+  3: values
+  public void labmdasValues(Map<String, Integer> map) {
+      map.values().forEach(v -> System.out.println(("value: " + v)));
+  }
+
+  */
+
 class MapSet {
     public int[] findingUsersActiveMinutes(int[][] logs, int k) {
         int[] result = new int[k];
