@@ -13,5 +13,6 @@ public class Test {
         map.put("hello", 5);
         map.put("sensational", 11);
         t.lambdasKeySet(map);
+        System.out.println("abc".substring(0,1));
     }
 }

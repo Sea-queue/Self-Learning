@@ -3,6 +3,19 @@ import java.util.ArrayList;
 
 // This class demenstrate the similarities of
 // String  --  Array  -- List
+/*
+ int to string:
+
+ int i = 10;
+ String s = String.valueOf(i);
+ String s = Integer.toString(i);
+
+ char to int:
+
+ char c = '3';
+ int i = Character.getNumericValue(c);
+
+ */
 public class StrArrayList {
     public static void main(String[] args) {
 
