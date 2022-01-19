@@ -9,6 +9,8 @@ print('\n')
 # List can contain multiple types of elements
 list2 = [5, True, "apple", "apple"]
 print(list2)
+#list size
+print(len(list2))
 print('\n')
 
 # to access elements in a list
