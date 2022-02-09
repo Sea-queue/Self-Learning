@@ -37,6 +37,7 @@ Without my notes, knowledge I learned before would be gone after a few days.
      C
      HTML
      SQL
+     Assembly(x86-64)
 
 
 
