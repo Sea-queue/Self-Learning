@@ -35,9 +35,9 @@ Without my notes, knowledge I learned before would be gone after a few days.
      Java
      Python
      C
+     Assembly(x86-64)
      HTML
      SQL
-     Assembly(x86-64)
 
 
 
