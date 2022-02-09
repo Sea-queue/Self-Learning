@@ -26,7 +26,7 @@ main:
 	mov $0, %al
 	call atol
 	movq %rax, %r13
-	
+
 	# Hint: Convert 2nd operand to long int
 	mov %r14, %rdi
 	mov $0, %al
@@ -34,15 +34,15 @@ main:
 	movq %rax, %r14
 
   	# Hint: Copy the first char of op into an 8-bit register
-  	# i.e., op_char = op[0] 
+  	# i.e., op_char = op[0]
 	movb 0(%r12), %r12b
-	
-	
+
+
   	# if (op_char == '+')
-	# 1: ascii 2:cmpb $'+', (%rdx) 3: hex 
+	# 1: ascii 2:cmpb $'+', (%rdx) 3: hex
 	cmpb $43, %r12b
 	je adding
-	
+
 	# if (op_char == '-')
 	cmpb $'-', %r12b
 	je subtracting
@@ -50,16 +50,16 @@ main:
 	# if (op_char == '*')
 	cmpb $'*', %r12b
 	je multiplying
-	
+
 	# if (op_chart == '/')
 	cmpb $'/', %r12b
 	je dividing
-	
+
 	# else print error; return 1 from main
 	mov $error_message, %rdi
 	mov $0, %al
 	call printf
-	mov $1, %rax 
+	mov $1, %rax
 	jmp end
 
 	adding:
@@ -68,8 +68,8 @@ main:
 		mov $format, %rdi
 		mov %r14, %rsi
 		call printf
- 	jmp end	
-	
+ 	jmp end
+
 	subtracting:
 		sub %r14, %r13
 		mov $0, %al
@@ -88,15 +88,18 @@ main:
 
 	dividing:
 		movq %r13, %rax
+        # when using signed int, need to sign entend rax to rdx:rax
+        # that means copying the rax sign bit to every bit of rdx and
+        # that is accomplished with cqo alias to cqto:
 		cqo
 		idiv %r14
 		mov $format, %rdi
 		mov %rax, %rsi
 		mov $0, %al
-		call printf 
+		call printf
 
-	end:	
-		
+	end:
+
   # Function epilogue
   leave
   ret
