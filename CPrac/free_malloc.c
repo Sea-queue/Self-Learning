@@ -37,6 +37,20 @@ int main(int argc, char **argv) {
         }
     }
 
+    /*
+     Since used free on pointer to the array, would not be able to access
+     ptr, so would lose the values in it;
+
+     The address space that you had a pointer to gets released to the Operating
+     System. While it may not be immediately deleted, the operating system is
+     able to use the address space that you freed for any other process running
+     on your machine.
+
+     The data "might" still be there on the same memory block as the system
+     does not want to make an extra effort to clean it up as its an overhead.
+     Hence,even if the data exists in that memory location it's undefined as
+     nothing points to it.
+     */
     free(ptr);
     printf("\nMalloc Memory successfully freed.\n");
 
