@@ -6,6 +6,9 @@ comments:
 // single line comments
 /* block comments */
 
+If you know how many things in an array you can initialized an array with
+fixed size, if you need to dynamically allocate, use following:
+
 C Dynamic Memory Allocation can be defined as a procesure in which the size of
 a data structure (like Array) is changed during the runtime. There are 4 library
 functions provided by C defined under <stdlib.h> header file to facilitate
