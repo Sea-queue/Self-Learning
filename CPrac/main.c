@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <ctype.h> //for the built in funtion isalnum() in isAlphanumeric()
-#include "syntax.c"
-#include "functions.c"
+#include "math_functions.c"
 
 //If the functions are NOT static, it causes duplicate symbol error when
 //compiling them together.
@@ -11,11 +10,6 @@ int main() {
    //calling isAlphanumeric
    printf("is alphanumeric?\n");
    isAlphanumeric();
-   printf("\n");
-
-   //calling syntax
-   printf("syntax related:\n");
-   syntax();
    printf("\n");
 
    //calling power
