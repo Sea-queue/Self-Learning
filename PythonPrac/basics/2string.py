@@ -102,30 +102,3 @@ print(stop - start)
 print("\nother functions:")
 print(phrase.startswith("hello"))
 print(phrase.endswith("g"))
-
-# Formatting a string: %, .format(), f-Strings
-print("\nformatting:")
-var = "Seaqueue"
-greeting =  "Hey %s" % var
-print(greeting)
-
-var = 9.9999
-value = "my gold chain is %d" % var
-print(value)
-value = "my gold chain is %f" % var
-print(value)
-value = "my gold chain is %.2f" % var
-print(value)
-
-value = "my gold chain is {}".format(var)
-print(value)
-
-value = "my gold chain is {:.2f}".format(var)
-print(value)
-
-var2 = 99999
-value = "my gold chain is {:.2f} and my watch is {}".format(var, var2)
-print(value)
-
-# value = f"my gold chain is {var} and my watch is {var2}"
-# print(value)
