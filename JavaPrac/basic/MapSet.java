@@ -1,4 +1,12 @@
 /*
+    Finding the Users Active Minutes(UAM):
+    logs[i] = [IDi, timei] indicates that the user with IDi
+    performed an action at the minute timei.
+
+    Multiple users can perform actions simultaneously, and
+    a single user can perform multiple actions in the same minute.
+
+
     Input: logs = [[0,5],[1,2],[0,2],[0,5],[1,3]], k = 5
     Output: [0,2,0,0,0]
     Explanation:
@@ -25,7 +33,7 @@
   2: Using keySet()
 
   public void forLoopKeySet(Map<String, Integer> map) {
-      for (String Key : map.keySet()) {
+      for (String key : map.keySet()) {
           System.out.println(key + ":" + map.get(key));
       }
   }
@@ -93,8 +101,19 @@
 
   */
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.Set;
+import java.util.HashSet;
+//Set: an unordered; NO duplication collection of objects;
+//Set.add() | Set.remove()
+//Map.put() | Map.get()
+//for (Map.Entry<String, Integer> entry : map.entrySet()) {}
+//for (String key : map.keySet()) {}
+//for (Integer value : map.values()) {}
 class MapSet {
-    public int[] findingUsersActiveMinutes(int[][] logs, int k) {
+    public int[] findUAM(int[][] logs, int k) {
+        //1-indexed answer[i] is the number of users whose UAM equals i.
         int[] result = new int[k];
         Map<Integer, Set<Integer>> acts = new HashMap<>();
 
@@ -109,10 +128,31 @@ class MapSet {
             }
         }
 
-        for (Map.Entry<Integer, Set<Integer>> map : acts.entrySet()) {
-            result[map.getValue().size() - 1] += 1;
+        //using MAP.entrySet()
+        // for (Map.Entry<Integer, Set<Integer>> entry : acts.entrySet()) {
+        //     result[entry.getValue().size() - 1] += 1;
+        // }
+
+        //using MAP.values()
+        for (Set<Integer> value : acts.values()) {
+            result[value.size() - 1] += 1;
         }
 
         return result;
+    }
+
+    public static void main(String[] args) {
+        MapSet ms1 = new MapSet();
+        int[][] acts = {{0 , 5}, {1 , 2}, {0 , 2}, {0, 5}, {1, 3}};
+
+        int[] log = ms1.findUAM(acts, 5);
+
+        //prints out the address value
+        System.out.println(log);
+
+        //prints out the actual values
+        for (int i = 0; i < log.length; i += 1) {
+            System.out.println(log[i]);
+        }
     }
 }
