@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Arrays;
 
- class ReccursivePermutation {
+class ReccursivePermutation {
     public List<List<Integer>> permuteUnique(int[] nums) {
         List<List<Integer>> result = new ArrayList<>();
         Arrays.sort(nums);

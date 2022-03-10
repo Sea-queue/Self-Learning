@@ -33,6 +33,7 @@ public class StrArrayList {
 
         // Array:
         // array.length
+        // stand alone: Object.func(new int[]{1, 1, 2});
         System.out.println("Array related:");
         //empty array
         int[] arr1 = new int[0];
