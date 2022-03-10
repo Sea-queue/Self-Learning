@@ -106,7 +106,7 @@ import java.util.HashMap;
 import java.util.Set;
 import java.util.HashSet;
 //Set: an unordered; NO duplication collection of objects;
-//Set.add() | Set.remove()
+//Set.add() | Set.remove("value")
 //Map.put() | Map.get()
 //for (Map.Entry<String, Integer> entry : map.entrySet()) {}
 //for (String key : map.keySet()) {}
