@@ -62,3 +62,38 @@ def combine_v2_help(i: int, n: int, k: int, resultArr: list[list[int]], arr: lis
 
 print(combine_v1(5, 3))
 print(combine_v2(5, 3))
+
+
+"""
+Given an integer array nums of unique elements, return all possible subsets
+(the power set) The solution set must not contain duplicate subsets.
+Return the solution in any order.
+
+Input: nums = [1,2,3]
+Output: [[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]]
+
+Input: nums = [0]
+Output: [[],[0]]
+"""
+
+def subsets(nums: list[int])->list[list[int]]:
+    result = [[]]
+    for i in range (1, len(nums) + 1):
+        combine(0, i, nums, result, list())
+    return result
+
+def combine(i, k, nums, result, arr) -> None:
+    if k == 0:
+        res = arr.copy()
+        result.append(res)
+        return
+    if i >= len(nums):
+        return
+
+    arr.append(nums[i])
+    combine(i+1, k-1, nums, result, arr)
+    arr.pop()
+    combine(i+1, k, nums, result, arr)
+
+print("\n")
+print(subsets([1,5,3]))
