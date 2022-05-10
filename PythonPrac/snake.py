@@ -190,7 +190,7 @@ def main():
 
     while flag:
         pygame.time.delay(70)
-        clock.tick(10)
+        clock.tick(8)
         snake.move()
         if snake.body[0].pos == snack.pos:
             snake.addCube()
