@@ -101,6 +101,8 @@ fact3_else:
     # else
     mov  %rdi, %r10
     subq $1, %rdi
+
+    # push and pop actually does nothing just moved data back and forth??
     pushq %r10   # push twice to align the stack pointer
     pushq %r10
     call fact3
@@ -131,6 +133,7 @@ main:
     movb $0, %al
     call printf
 
+    # why have a separet return value???
     # return 0
     movq $0, %rax
     leave
