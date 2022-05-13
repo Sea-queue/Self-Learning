@@ -1,4 +1,3 @@
-# coding zoom Number: 593 965 1130
 import heapq
 from collections import Counter
 from heapq import heappop, heappush, heapify
@@ -97,7 +96,6 @@ def maxSlidingWindow_2(nums: list[int], k: int) -> list[int]:
 
     for i in range(k, len(nums)):
         dic[nums[i-k]] -= 1
-        print("i: %d dict: %s" % (i, dic))
         length = len(heap)
         while (length > 0 and dic[-1*heap[0]] == 0):
             heapq.heappop(heap)
@@ -110,4 +108,4 @@ def maxSlidingWindow_2(nums: list[int], k: int) -> list[int]:
 print(maxSlidingWindow_1([1,3,7,-3,5,3,6,1], 3))
 print(maxSlidingWindow_1([1,-1], 1))
 print(maxSlidingWindow_2([1,3,7,-3,5,3,6,1], 3))
-# print(maxSlidingWindow_2([1,-1], 1))
+print(maxSlidingWindow_2([1,-1], 1))
