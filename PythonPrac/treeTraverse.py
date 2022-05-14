@@ -1,3 +1,4 @@
+import collections
 class TreeNode:
     def __init__(self, val, left=None, right=None):
         self.val = val
@@ -26,7 +27,7 @@ class Solution:
             self.inorderHelp(root.right, result)
 
 
-    def levelOrder(self, root: TreeNode) -> list[list[int]]:
+    def levelOrder_1(self, root: TreeNode) -> list[list[int]]:
         """ Level Order: from left to right, level by level """
         result = []
         self.levelOrderHelp(root, result, 0)
@@ -40,6 +41,50 @@ class Solution:
             result[depth].append(root.val)
             self.levelOrderHelp(root.left, result, depth + 1)
             self.levelOrderHelp(root.right, result, depth + 1)
+
+    def levelOrder_2(self, root: TreeNode) -> list[list[int]]:
+        if not root: return []
+        result = []
+        queue = collections.deque([root])
+
+        while queue:
+            level = []
+            for _ in range(len(queue)):
+                node = queue.popleft()
+                level.append(node.val)
+                if node.left:
+                    queue.append(node.left)
+                if node.right:
+                    queue.append(node.right)
+            result.append(level)
+
+        return result
+
+
+    def zigzagLevelOrder(sefl, root: TreeNode) -> list[list[int]]:
+        """ left to right, then right to left for the next level and alternate between """
+        if not root: return []
+        queue = collections.deque([root])
+        result = []
+        even_level = True
+
+        while queue:
+            level = []
+            for _ in range(len(queue)):
+                node = queue.popleft()
+                level.append(node.val)
+                if node.left:
+                    queue.append(node.left)
+                if node.right:
+                    queue.append(node.right)
+            if even_level:
+                result.append(level)
+            else:
+                result.append(level[::-1])
+            even_level = not even_level
+            
+        return result
+
 
 def main():
     n8 = TreeNode(8)
@@ -55,7 +100,9 @@ def main():
 
     o1 = Solution()
     print(o1.inorderTraversal(n1))
-    print(o1.levelOrder(n1))
+    print(o1.levelOrder_1(n1))
+    print(o1.levelOrder_2(n1))
+    print(o1.zigzagLevelOrder(n1))
 
 
 main()

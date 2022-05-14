@@ -87,6 +87,9 @@ new_list4 = list4 + [1, 1, 1] + list3
 print(new_list4)
 print('\n')
 
+# list[<start>:<stop>:<step>]
+# list_a = '1234'
+# a[::-1] --> '4321'
 list5 = new_list4[4:9] #[inclusive : exclusive]
 print(list5)
 list5_v1 = new_list4[:9]
