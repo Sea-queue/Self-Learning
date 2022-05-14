@@ -7,7 +7,7 @@ class TreeNode:
 
 
 class Solution:
-    def inorderTraversal(self, root: TreeNode) -> list[int]:
+    def inorder(self, root: TreeNode) -> list[int]:
         """ inorder: left, root, right"""
 
         result = list()
@@ -82,8 +82,22 @@ class Solution:
             else:
                 result.append(level[::-1])
             even_level = not even_level
-            
+
         return result
+
+    def buildTree(self, preorder: list[int], inorder: list[int]):
+        """
+        construct the binary tree with given preorder and inorder node value
+        NOTE:
+        when pop the preorder list in the left branch, when return, it affects the
+        preorder list passed to the right branch.
+        """
+        if inorder:
+            idx = inorder.index(preorder.pop(0))
+            root = TreeNode(inorder[idx])
+            root.left = self.buildTree(preorder, inorder[0:idx])
+            root.right = self.buildTree(preorder, inorder[idx+1:])
+            return root
 
 
 def main():
@@ -99,10 +113,11 @@ def main():
     n1 = TreeNode(1, n2, n3)
 
     o1 = Solution()
-    print(o1.inorderTraversal(n1))
+    print(o1.inorder(n1))
     print(o1.levelOrder_1(n1))
     print(o1.levelOrder_2(n1))
     print(o1.zigzagLevelOrder(n1))
+    print(o1.inorder(o1.buildTree([1,2,4,5,3,6,7], [4,2,5,1,6,3,7])))
 
 
 main()
