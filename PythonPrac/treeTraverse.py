@@ -1,9 +1,10 @@
 import collections
 class TreeNode:
-    def __init__(self, val, left=None, right=None):
+    def __init__(self, val, left=None, right=None, next: 'Node' = None):
         self.val = val
         self.left = left
         self.right = right
+        self.next = next
 
 
 class Solution:
@@ -99,6 +100,37 @@ class Solution:
             root.right = self.buildTree(preorder, inorder[idx+1:])
             return root
 
+    def levelOrderConnect_1(self, root) -> TreeNode:
+        """ set each node.next to the node on its right on the same level or None"""
+        if not root:
+            return root
+        if root.left:
+            root.left.next = root.right
+        if root.right and root.next:
+            root.right.next = root.next.left
+        self.levelOrderConnect_1(root.left)
+        self.levelOrderConnect_1(root.right)
+        return root
+
+    def levelOrderConnect_2(self, root) -> TreeNode:
+        """ set each node.next to the node on its right on the same level or None"""
+        if not root: return None
+        queue = collections.deque([root])
+
+        while queue:
+            level = []
+            for i in range(len(queue)):
+                node = queue.popleft()
+                if level:
+                    level[i-1].next = node
+                level.append(node)
+                if node.left:
+                    queue.append(node.left)
+                if node.right:
+                    queue.append(node.right)
+
+        return root
+
 
 def main():
     n8 = TreeNode(8)
@@ -118,6 +150,14 @@ def main():
     print(o1.levelOrder_2(n1))
     print(o1.zigzagLevelOrder(n1))
     print(o1.inorder(o1.buildTree([1,2,4,5,3,6,7], [4,2,5,1,6,3,7])))
+    root1 = o1.levelOrderConnect_1(n1)
+    print(root1.next)
+    print(root1.left.next.val)
+    print(root1.left.left.next.val)
 
+    root2 = o1.levelOrderConnect_2(n1)
+    print(root2.next)
+    print(root2.left.next.val)
+    print(root2.left.right.next.val)
 
 main()
