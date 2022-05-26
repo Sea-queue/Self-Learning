@@ -20,7 +20,7 @@ Explanation: ((10 * (6 / ((9 + 3) * -11))) + 17) + 5
 = 17 + 5
 = 22
 """
-
+# reverse Calculation
 def evalRPN(tokens: list[str]) -> int:
         """
         keypart:
@@ -39,7 +39,7 @@ def evalRPN(tokens: list[str]) -> int:
             else:
                 right = stack.pop()
                 left = stack.pop()
-                stack.append(calculate(right, v, left))
+                stack.append(rpnHelper(right, v, left))
         return int(stack.pop())
 
     # no need
@@ -48,7 +48,7 @@ def evalRPN(tokens: list[str]) -> int:
     #         return True
     #     return False
 
-def calculate(right, v, left) -> int:
+def rpnHelper(right, v, left) -> int:
     right = int(right)
     left = int(left)
     if v == "+":
@@ -63,3 +63,59 @@ def calculate(right, v, left) -> int:
 
 print(evalRPN(["10","6","9","3","+","-11","*","/","*","17","+","5","+"]))
 print(evalRPN(["3","11","+","5","-"]))
+
+
+
+"""
+Example 1:
+Input: s = "3+2*2"
+Output: 7
+
+Example 2:
+Input: s = " 3/2 "
+Output: 1
+
+Example 3:
+Input: s = " 3+5 / 2 "
+Output: 5
+
+Constraints:
+1 <= s.length <= 3 * 105
+s consists of integers and operators ('+', '-', '*', '/') separated by some number of spaces.
+s represents a valid expression.
+All the integers in the expression are non-negative integers in the range [0, 231 - 1].
+The answer is guaranteed to fit in a 32-bit integer.
+"""
+import math
+def calculate(s: str) -> int:
+    """
+    if + or -: store the digit to the stack
+    if * or /: calculate the value then store the result to the stack
+    return the sum of the stack
+    """
+    stack = []
+    preOperant = "+"
+    s += "+" # to include the last digit in the loop
+    num = 0
+    for item in s:
+        if item.isdigit():
+            num = num*10 + int(item)
+        elif item == " ":
+            continue
+        else:
+            if preOperant == "+":
+                stack.append(num)
+            elif preOperant == "-":
+                stack.append(-1*num)
+            elif preOperant == "*":
+                operant = stack.pop()
+                stack.append(num*operant)
+            elif preOperant == "/":
+                operant = stack.pop()
+                stack.append(math.trunc(operant / num))
+            num = 0
+            preOperant = item
+    return sum(stack)
+
+
+print(calculate(" 3 / 4 * 5 + 35 - 9"))
