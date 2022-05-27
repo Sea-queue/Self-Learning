@@ -132,6 +132,42 @@ class Solution:
         return root
 
 
+    def lowestCommonAncestor(self, root: TreeNode, p: TreeNode, q: TreeNode) -> TreeNode:
+        """
+        Given a binary tree: no need left smaller than root, right bigger than root
+        The lowest common ancestor is defined between two nodes p and q as the
+        lowest node in T that has both p and q as descendants.
+        (where we allow a node to be a descendant of itself)
+        """
+        stack, p_trace, q_trace = [], [], []
+        if root.val == p.val or root.val == q.val:
+            return root
+
+        while True:
+            if root.left:
+                stack.append(root)
+                root.left, root = None, root.left
+            elif root.right:
+                stack.append(root)
+                root.right, root = None, root.right
+            else:
+                if root == p:
+                    p_trace = stack[:]
+                    p_trace.append(root)
+                elif root == q:
+                    q_trace = stack[:]
+                    q_trace.append(root)
+                elif p_trace and q_trace:
+                    break
+                root = stack.pop()
+
+        idx, minLen = 0, min(len(p_trace), len(q_trace))
+        while idx < minLen and p_trace[idx] is q_trace[idx]:
+            result = p_trace[idx]
+            idx += 1
+        return result
+
+
 def main():
     n8 = TreeNode(8)
     n9 = TreeNode(9)
