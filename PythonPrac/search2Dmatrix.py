@@ -18,7 +18,7 @@ Output: True
 target = 65
 Output: False
 """
-
+# THE POWER OF ALGORITHEM: SAME IDICIES AND DATA STRUCTURE BUT HOW YOU THINK ABOUT IT
 def searchMatrix_1(matrix: list[list[int]], target: int) -> bool:
     """ deploy binary search on each line """
     if not matrix or not matrix[0]:

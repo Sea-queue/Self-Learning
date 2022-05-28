@@ -16,6 +16,7 @@ Input: nums = [-2,0,-1]
 Output: 0
 Explanation: The result cannot be 2, because [-2,-1] is not a subarray.
 """
+# THE POWER OF ALGORITHEM
 # THIS SOLUTION IS CRAZY, THIS PROBLEM GET ME INTERESTED IN PROBLEM SOLVING
 def maxProduct(nums):
     product = 1;
