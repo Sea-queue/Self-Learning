@@ -3,6 +3,14 @@ from math import floor
 from math import ceil
 from math import sqrt
 
+# Defining a positive infinite integer
+positive_infinity = float('inf')
+print('Positive Infinity: ', positive_infinity)
+
+# Defining a negative infinite integer
+negative_infinity = float('-inf')
+print('Negative Infinity: ', negative_infinity)
+
 num = -7
 # use str() to print number along with string
 print(str(num) + " is my favorite number")
