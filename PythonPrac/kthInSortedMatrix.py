@@ -18,6 +18,7 @@ Example 2:
 Input: matrix = [[-5]], k = 1
 Output: -5
 """
+# completely did on solo  
 import heapq
 def kthSmallest(matrix: list[list[int]], k: int) -> int:
         n = len(matrix)
