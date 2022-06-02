@@ -43,3 +43,28 @@ def longestIncreasingSub(nums: list[int]) -> int:
 print(longestIncreasingSub([0,1,0,3,2,3]))
 print(longestIncreasingSub([10,9,2,5,3,7,101,18]))
 print(longestIncreasingSub([9,9,9,9]))
+
+"""
+Given a string s and an integer k, return the length of the longest substring
+of s such that the frequency of each character in this substring is greater
+than or equal to k.
+
+Example 1:
+Input: s = "aaabb", k = 3
+Output: 3
+Explanation: The longest substring is "aaa", as 'a' is repeated 3 times.
+
+Example 2:
+Input: s = "ababbc", k = 2
+Output: 5
+Explanation: The longest substring is "ababb", as 'a' is repeated 2 times and 'b' is repeated 3 times.
+"""
+
+def longestSubOfK(s: str, k: int) -> int:
+    for c in set(s):
+        if s.count(c) < k:
+            return max(longestSubOfK(t, k) for t in s.split(c))
+    return len(s)
+
+print(longestSubOfK("fgabaabc", 2))
+print(longestSubOfK("fgabaabc", 3))
