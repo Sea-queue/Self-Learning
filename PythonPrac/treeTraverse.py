@@ -168,6 +168,53 @@ class Solution:
         return result
 
 
+    def maxPathSum(self, root: TreeNode) -> int:
+        """
+        MILESTONE: HARD LEVEL -- COMPLETELY FINISHED BY MYSELF
+        Given the root of a binary tree,
+        return the maximum path sum of any non-empty path.
+        The path sum of a path is the sum of the node's values in the path.
+        Note that the path does not need to pass through the root.
+        • -1000 <= Node.val <= 1000
+
+        Example: (tree is in level order: line by line from left to right)
+        [-100,-9,-8,null,null,15,-7] --> 15
+        [-100,-9,-8,null,null,-15,-7] --> -7
+        [100,-9,-8,-4,-3,-15,-7] --> 100
+        [-10,9,20,null,null,15,7] --> 42
+        """
+        accu = []
+        self.helper(root, accu)
+        return accu[0]
+
+    def helper(self, root, accu) -> int:
+        if not root.left and not root.right:
+            if not accu:
+                accu.append(root.val)
+            else:
+                accu[0] = max(accu[0], root.val)
+            return root.val
+
+        elif root.left and not root.right:
+            left = self.helper(root.left, accu)
+            val = max(root.val, root.val + left)
+            accu[0] = max(accu[0], val)
+            return val
+
+        elif root.right and not root.left:
+            right = self.helper(root.right, accu)
+            val = max(root.val, root.val + right)
+            accu[0] = max(accu[0], val)
+            return val
+
+        else:
+            left = self.helper(root.left, accu)
+            right = self.helper(root.right, accu)
+            val = max(root.val, root.val + left, root.val + right)
+            accu[0] = max(accu[0], root.val + left + right, val)
+            return val
+
+
 def main():
     n8 = TreeNode(8)
     n9 = TreeNode(9)
@@ -195,5 +242,16 @@ def main():
     print(root2.next)
     print(root2.left.next.val)
     print(root2.left.right.next.val)
+
+    n4 = TreeNode(-4)
+    n5 = TreeNode(-5)
+    n6 = TreeNode(-6)
+    n7 = TreeNode(7)
+    n2 = TreeNode(-6, n4, n5)
+    n3 = TreeNode(-4, n6, n7)
+    n1 = TreeNode(100, n2, n3)
+    o2 = Solution()
+    print(o2.maxPathSum(n1))
+
 
 main()
